@@ -1,0 +1,35 @@
+//Roll a d(x)
+// or 
+//previous
+//are the functional inputs.
+import java.util.*;
+import java.io.*;
+class DiceRollerV2 {
+    public static void main(String[]args) {
+    Scanner input= new Scanner(System.in);
+    Integer[] prevRolls={};
+    
+    while (true) {
+        String input1=input.nextLine();
+        if (input1.startsWith("roll a")) {
+            String[] ia = input1.split("d",2);
+            String filteredStr=ia[1];
+            filteredStr=filteredStr.trim();
+            int rolling= Integer.parseInt(filteredStr);
+            Random diceRoll= new Random();
+            int rolled=diceRoll.nextInt(rolling)+1;
+            System.out.println("Machine rolled a d"+ rolling +" and got a " + rolled);
+            ArrayList<Integer> Rolls= new ArrayList<Integer>(Arrays.asList(prevRolls));
+            Rolls.add(rolled);
+            prevRolls= Rolls.toArray(prevRolls);
+        } else if (input1.equalsIgnoreCase("previous")){
+            System.out.println("your previous rolls are: ");
+            for (int i=0; i<prevRolls.length;i++) {
+                System.out.println(prevRolls[i]);
+            }
+        } else {
+            System.out.println("Incorrect Syntax");
+        }
+    }
+}
+}
