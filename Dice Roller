@@ -1,0 +1,98 @@
+import java.io.*;
+import java.util.*;
+import java.lang.*;
+public class rolling {
+    public static void main(String[] args)
+        throws IOException
+    {
+        // My own little variables
+        Integer[] prevRolls={};
+        String command4="roll a d4";
+        String command6="roll a d6";
+        String command8="roll a d8";
+        String command10="roll a d10";
+        String command12="roll a d12";
+        String command20="roll a d20";
+        String commandstop="end program";
+        String commandRolls="previous rolls";
+        String nothing="";
+        boolean cont=true;
+        // Enter data using BufferReader
+        BufferedReader reader = new BufferedReader(
+            new InputStreamReader(System.in));
+ 
+        while (cont==true){
+        // Reading data using readLine
+        String name = reader.readLine();
+        //Checking if command was entered
+        //killing the program
+        if (commandstop.equalsIgnoreCase(name)){
+            System.out.println("Understood, ending program.");
+            cont=false;
+        }
+        //d4
+        if (command4.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled4 = diceroll.nextInt(4)+1;
+        System.out.println("Machine has rolled a d4, rolling a "+rolled4+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled4);
+        prevRolls=al.toArray(prevRolls);
+        }
+        //d6
+        if (command6.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled6 = diceroll.nextInt(6)+1;
+        System.out.println("Machine has rolled a d6, rolling a "+rolled6+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled6);
+        prevRolls=al.toArray(prevRolls);
+        }
+        //d8
+        if (command8.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled8 = diceroll.nextInt(8)+1;
+        System.out.println("Machine has rolled a d8, rolling a "+rolled8+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled8);
+        prevRolls=al.toArray(prevRolls);
+        }
+        //d10
+        if (command10.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled10 = diceroll.nextInt(10)+1;
+        System.out.println("Machine has rolled a d10, rolling a "+rolled10+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled10);
+        prevRolls=al.toArray(prevRolls);
+        }
+        //d12
+        if (command12.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled12 = diceroll.nextInt(12)+1;
+        System.out.println("Machine has rolled a d12, rolling a "+rolled12+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled12);
+        prevRolls=al.toArray(prevRolls);
+        }
+        //d20
+        if (command20.equalsIgnoreCase(name)){
+        Random diceroll = new Random(); 
+        int rolled20 = diceroll.nextInt(20)+1;
+        System.out.println("Machine has rolled a d20, rolling a "+rolled20+".");
+        ArrayList<Integer> al= new ArrayList<Integer>(Arrays.asList(prevRolls));
+        al.add(rolled20);
+        prevRolls=al.toArray(prevRolls);
+        }
+        if(commandRolls.equalsIgnoreCase(name)){
+            System.out.println("your rolls so far are:");
+            for (int i=0; i<prevRolls.length;i++){
+                System.out.println(prevRolls[i]);
+            }
+        }
+        if (!name.equalsIgnoreCase(command20)&&!name.equalsIgnoreCase(command12)&&!name.equalsIgnoreCase(command10)&&!name.equalsIgnoreCase(command8)&&!name.equalsIgnoreCase(command6)&&!name.equalsIgnoreCase(command4)&&!name.equalsIgnoreCase(commandstop)&&!name.equalsIgnoreCase(nothing)&&!name.equalsIgnoreCase(commandRolls)) {
+            System.out.println("Input not understood.");
+        }
+    }
+}
+}
