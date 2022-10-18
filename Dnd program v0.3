@@ -1,0 +1,73 @@
+//Roll a d(x)
+// or 
+//previous
+//are the functional inputs.
+import java.util.*;
+import java.io.*;
+class DiceRollerV2 {
+    public static void main(String[]args)throws InterruptedException{
+    Scanner input= new Scanner(System.in);
+    Integer[] prevRolls={};
+    String[][] inventory={};
+    System.out.println("Please enter some stats:");
+    System.out.println("Strength:");
+    String st1=input.nextLine();
+    int st=Integer.parseInt(st1);
+    System.out.println("Dexterity:");
+    String de1=input.nextLine();
+    int de=Integer.parseInt(de1);
+    System.out.println("Constitution:");
+    String co1=input.nextLine();
+    int co=Integer.parseInt(co1);
+    System.out.println("Intelligence:");
+    String in1=input.nextLine();
+    int in=Integer.parseInt(in1);
+    System.out.println("Wisdom:");
+    String wi1=input.nextLine();
+    int wi=Integer.parseInt(wi1);
+    System.out.println("Charisma:");
+    String ch1=input.nextLine();
+    int ch=Integer.parseInt(ch1);
+    System.out.println("Sick, let's continue!");
+    
+    while (true) {
+        String input1=input.nextLine();
+        //creating items and putting them in inventory
+        if (input1.equalsIgnoreCase("pickup")){
+            String[] Item={null,null};
+            System.out.println("What is the item name?");
+            String itemname=input.nextLine();
+            Item[0]=itemname;
+            System.out.println("What is it's weight?");
+            String itemweight=input.nextLine();
+            Item[1]=itemweight;
+            ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
+            inv.add(Item);
+            inventory=inv.toArray(inventory);
+            
+        } else if (input1.startsWith("roll a")) {
+            String[] ia = input1.split("d",2);
+            String filteredStr=ia[1];
+            filteredStr=filteredStr.trim();
+            int rolling= Integer.parseInt(filteredStr);
+            Random diceRoll= new Random();
+            int rolled=diceRoll.nextInt(rolling)+1;
+            System.out.println("Machine rolled a d"+ rolling +" and got a " + rolled);
+            ArrayList<Integer> Rolls= new ArrayList<Integer>(Arrays.asList(prevRolls));
+            Rolls.add(rolled);
+            prevRolls= Rolls.toArray(prevRolls);
+        } else if (input1.equalsIgnoreCase("previous")){
+            System.out.println("your previous rolls are: ");
+            for (int i=0; i<prevRolls.length;i++) {
+                System.out.print(prevRolls[i]+ ", ");
+                Thread.sleep(250);
+            }
+        }else if (input1.equalsIgnoreCase("inventory")){
+            // displaying inventory
+            System.out.println(Arrays.deepToString(inventory));
+        } else if (input1.isEmpty()==false){
+            System.out.println("Incorrect Syntax");
+        }
+    }
+}
+}
