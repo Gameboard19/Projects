@@ -1,4 +1,5 @@
 //Roll a d(x)
+//item
 // or 
 //previous
 //are the functional inputs.
@@ -30,21 +31,31 @@ class DiceRollerV2 {
         if (input1.equalsIgnoreCase("item")){
             System.out.println("would you like to pickup, drop, or inventory?");
             String PD=input.nextLine();
-        if (PD.equalsIgnoreCase("pickup")){
-            String[] Item={null,null};
-            System.out.println("What is the item name?");
-            String itemname=input.nextLine();
-            Item[0]=itemname;
-            System.out.println("What is it's weight?");
-            String itemweight=input.nextLine();
-            Item[1]=itemweight;
-            ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
-            inv.add(Item);
-            inventory=inv.toArray(inventory);
+            if (PD.equalsIgnoreCase("pickup")){
+                System.out.println("What is the item name?");
+                String itemname=input.nextLine();
+                boolean alreadyexists=false;
+                for (int x=0; x<inventory.length; x++) {
+                    if (inventory[x][0].equalsIgnoreCase(itemname)){
+                        alreadyexists=true;
+                        int itemquantity=Integer.parseInt(inventory[x][1]);
+                        itemquantity++;
+                        inventory[x][1]=Integer.toString(itemquantity);
+                    }
+                }
+            if (alreadyexists==false){
+                String[] Item={null,null};
+                Item[0]=itemname;
+                Item[1]="1";
+                //Item[1]=itemquantity.toString;
+                ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
+                inv.add(Item);
+                inventory=inv.toArray(inventory);
+            }
         } else if (PD.equalsIgnoreCase("drop")){
             System.out.println("what is the index of the item?");
             int itemInd=Integer.parseInt(input.nextLine());
-            ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
+            ArrayList<Object[]> inv= new ArrayList<Object[]>(Arrays.asList(inventory));
             inv.remove(itemInd);
             inventory=inv.toArray(inventory);
         } else if (PD.equalsIgnoreCase("inventory")){
@@ -69,5 +80,5 @@ class DiceRollerV2 {
             System.out.println("Incorrect Syntax");
         }
     }
-}
+    }
 }
