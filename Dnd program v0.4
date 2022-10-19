@@ -29,11 +29,14 @@ class DiceRollerV2 {
     String ch1=input.nextLine();
     int ch=Integer.parseInt(ch1);
     System.out.println("Sick, let's continue!");
-    
+
     while (true) {
         String input1=input.nextLine();
         //creating items and putting them in inventory
-        if (input1.equalsIgnoreCase("pickup")){
+        if (input1.equalsIgnoreCase("item")){
+            System.out.println("would you like to pickup or drop?");
+            String PD=input.nextLine();
+        if (PD.equalsIgnoreCase("pickup")){
             String[] Item={null,null};
             System.out.println("What is the item name?");
             String itemname=input.nextLine();
@@ -44,7 +47,13 @@ class DiceRollerV2 {
             ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
             inv.add(Item);
             inventory=inv.toArray(inventory);
-            
+        } else if (PD.equalsIgnoreCase("drop")){
+            System.out.println("what is the index of the item?");
+            int itemInd=Integer.parseInt(input.nextLine());
+            ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
+            inv.remove(itemInd);
+            inventory=inv.toArray(inventory);
+        }
         } else if (input1.startsWith("roll a")) {
             String[] ia = input1.split("d",2);
             String filteredStr=ia[1];
@@ -58,10 +67,7 @@ class DiceRollerV2 {
             prevRolls= Rolls.toArray(prevRolls);
         } else if (input1.equalsIgnoreCase("previous")){
             System.out.println("your previous rolls are: ");
-            for (int i=0; i<prevRolls.length;i++) {
-                System.out.print(prevRolls[i]+ ", ");
-                Thread.sleep(250);
-            }
+            System.out.println(Arrays.toString(prevRolls));
         }else if (input1.equalsIgnoreCase("inventory")){
             // displaying inventory
             System.out.println(Arrays.deepToString(inventory));
