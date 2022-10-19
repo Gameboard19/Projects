@@ -11,30 +11,24 @@ class DiceRollerV2 {
     String[][] inventory={};
     System.out.println("Please enter some stats:");
     System.out.println("Strength:");
-    String st1=input.nextLine();
-    int st=Integer.parseInt(st1);
+    int st=Integer.parseInt(input.nextLine());
     System.out.println("Dexterity:");
-    String de1=input.nextLine();
-    int de=Integer.parseInt(de1);
+    int de=Integer.parseInt(input.nextLine());
     System.out.println("Constitution:");
-    String co1=input.nextLine();
-    int co=Integer.parseInt(co1);
+    int co=Integer.parseInt(input.nextLine());
     System.out.println("Intelligence:");
-    String in1=input.nextLine();
-    int in=Integer.parseInt(in1);
+    int in=Integer.parseInt(input.nextLine());
     System.out.println("Wisdom:");
-    String wi1=input.nextLine();
-    int wi=Integer.parseInt(wi1);
+    int wi=Integer.parseInt(input.nextLine());
     System.out.println("Charisma:");
-    String ch1=input.nextLine();
-    int ch=Integer.parseInt(ch1);
+    int ch=Integer.parseInt(input.nextLine());
     System.out.println("Sick, let's continue!");
 
     while (true) {
         String input1=input.nextLine();
         //creating items and putting them in inventory
         if (input1.equalsIgnoreCase("item")){
-            System.out.println("would you like to pickup or drop?");
+            System.out.println("would you like to pickup, drop, or inventory?");
             String PD=input.nextLine();
         if (PD.equalsIgnoreCase("pickup")){
             String[] Item={null,null};
@@ -53,6 +47,9 @@ class DiceRollerV2 {
             ArrayList<String[]> inv= new ArrayList<String[]>(Arrays.asList(inventory));
             inv.remove(itemInd);
             inventory=inv.toArray(inventory);
+        } else if (PD.equalsIgnoreCase("inventory")){
+            // displaying inventory
+            System.out.println(Arrays.deepToString(inventory));
         }
         } else if (input1.startsWith("roll a")) {
             String[] ia = input1.split("d",2);
@@ -68,9 +65,6 @@ class DiceRollerV2 {
         } else if (input1.equalsIgnoreCase("previous")){
             System.out.println("your previous rolls are: ");
             System.out.println(Arrays.toString(prevRolls));
-        }else if (input1.equalsIgnoreCase("inventory")){
-            // displaying inventory
-            System.out.println(Arrays.deepToString(inventory));
         } else if (input1.isEmpty()==false){
             System.out.println("Incorrect Syntax");
         }
