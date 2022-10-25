@@ -1,0 +1,42 @@
+//quadratic equation solver, I got bored of them so I enslaved a machine to do it for me.
+
+import java.io.*;
+import java.util.*;
+public class quadSolver{
+    public static void main(String[] args)throws InterruptedException{
+        Scanner scan= new Scanner(System.in);
+        while (true){
+            // entering variables
+            System.out.println("A?");
+            double a=scan.nextDouble();
+            System.out.println("B?");
+            double b=scan.nextDouble();
+            System.out.println("C?");
+            double c=scan.nextDouble();
+            System.out.println("the answer is:");
+            //vertex point
+            Double[] vertex={null,null};
+            //vertex x and y
+            double x=((-b)/(2*a));
+            double y=((a*Math.pow(x,2))+(b*x)+c);
+            vertex[0]=x;
+            vertex[1]=y;
+            if (a<0){
+                System.out.println("The vertex is a maximum");
+            } else {
+                System.out.println("the vertex is a minimum");
+            }
+            System.out.println("the vertex is "+Arrays.toString(vertex));
+            System.out.println();
+            //3 points to the left and right of vertex.
+            ArrayList<String> answers= new ArrayList<String>();
+            for (int i=0; i<7;i++){
+                answers.add("if x is "+((x-3)+i)+" then y is "+((a*Math.pow(((x-3)+i), 2))+(b*((x-3)+i))+c)+" ");
+            }
+            String[] ans={};
+            ans=answers.toArray(ans);
+            System.out.println(Arrays.toString(ans));
+            Thread.sleep(1000);
+        }
+    }
+}
