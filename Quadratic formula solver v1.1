@@ -17,10 +17,10 @@ public class quadSolver{
             //vertex point
             Double[] vertex={null,null};
             //vertex x and y
-            double x=((-b)/(2*a));
-            double y=((a*Math.pow(x,2))+(b*x)+c);
-            vertex[0]=x;
-            vertex[1]=y;
+            double vx=((-b)/(2*a));
+            double vy=((a*Math.pow(vx,2))+(b*vx)+c);
+            vertex[0]=vx;
+            vertex[1]=vy;
             if (a<0){
                 System.out.println("The vertex is a maximum");
             } else {
@@ -31,11 +31,12 @@ public class quadSolver{
             //3 points to the left and right of vertex.
             ArrayList<String> answers= new ArrayList<String>();
             for (int i=0; i<7;i++){
-                answers.add("if x is "+((x-3)+i)+" then y is "+((a*Math.pow(((x-3)+i), 2))+(b*((x-3)+i))+c)+" ");
+                answers.add("if x is "+((vx-3)+i)+" then y is "+((a*Math.pow(((vx-3)+i), 2))+(b*((vx-3)+i))+c)+" ");
             }
             String[] ans={};
             ans=answers.toArray(ans);
             System.out.println(Arrays.toString(ans));
+            System.out.println("vertex form is: "+ a+"(x-"+vx+")^2 + "+ vy);
             Thread.sleep(1000);
         }
     }
