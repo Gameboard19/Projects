@@ -31,7 +31,7 @@ public class quadSolver{
             //3 points to the left and right of vertex.
             ArrayList<String> answers= new ArrayList<String>();
             for (int i=0; i<7;i++){
-                answers.add("if x is "+((vx-3)+i)+" then y is "+((a*Math.pow(((vx-3)+i), 2))+(b*((vx-3)+i))+c)+" ");
+                answers.add("("+((vx-3)+i)+","+((a*Math.pow(((vx-3)+i), 2))+(b*((vx-3)+i))+c)+")"+"  ");
             }
             String[] ans={};
             ans=answers.toArray(ans);
