@@ -14,6 +14,23 @@ public class quadSolver{
             System.out.println("C?");
             double c=scan.nextDouble();
             System.out.println("the answer is:");
+            //lets add some binomial math, shall we?
+            double AC=a*c;
+            boolean match=false;
+            double p=0;
+            double q=0;
+            while (match==false) {
+                p++;
+                q=AC/p;
+                if (AC%p==0) {
+                    if ((p+q)==b){
+                        match=true;
+                    }else{
+                        match=false;
+                    }
+                }
+            }
+            System.out.println("binomial factoring thing is "+ a+"x^2 + "+p+"x +"+q+"x +" + c +", I'm sure you can figure it out from here. my creator might add more later when he's feeling more productive.     ");
             //vertex point
             Double[] vertex={null,null};
             //vertex x and y
@@ -36,6 +53,7 @@ public class quadSolver{
             String[] ans={};
             ans=answers.toArray(ans);
             System.out.println("The points to graph are: "+Arrays.toString(ans));
+            //vertex form
             System.out.println("vertex form is: "+ a+"(x-"+vx+")^2 + "+ vy);
             Thread.sleep(1000);
         }
