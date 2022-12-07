@@ -1,0 +1,52 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+import java.io.*;
+public class magic {
+    static class player{
+        private String name;
+        private int health;
+        private int black=0, white=0, red=0, green=0, blue=0;
+        
+    }
+    static class card{
+        private String name;
+    }
+    static class land extends card{
+        int black=0, white=0, red=0, green=0, blue=0;
+    }
+    static class spell extends card{
+        private int cCost, bCost, wCost, rCost, gCost, buCost;
+    }
+    static class creature extends spell{
+        boolean reach=false,flying=false, menace=false, deathtouch=false, defender=false, doublestrike=false, firststrike=false, haste=false, indestructible=false, lifelink=false;
+        private int power=0, toughness=0;
+    }
+    static class instant extends spell{
+        
+    }
+    static class sorcery extends spell{
+        
+    }
+    public static void main(String[] args) {
+        Random r=new Random();
+        Scanner s= new Scanner(System.in);
+        ArrayList<card> myDeck = new ArrayList<card>();
+        for (int i=0; i<20; i++){
+            land myLand=new land();
+            int landcolor=r.nextInt(5);
+            if (landcolor==0){
+                myLand.black++;
+            } else if (landcolor==1){
+                myLand.white++;
+            } else if (landcolor==2){
+                myLand.red++;
+            } else if (landcolor==3){
+                myLand.green++;
+            } else if (landcolor==4){
+                myLand.blue++;
+            }
+            myDeck.add(myLand);
+        }
+    }
+}
