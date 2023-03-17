@@ -1,0 +1,32 @@
+// v1, detects words it finds.
+import java.io.*;
+import java.util.*;
+class WordCollector {
+    static Scanner s= new Scanner(System.in);
+    public static void main(String[] args) {
+        List<String[]> words = new ArrayList<String[]>();
+        String[] inArr;
+        while (true) {
+            String in= s.nextLine();
+            in=in.replaceAll("[.,?!':;]","");
+            inArr= in.split(" ");
+            for (int i=0; i<inArr.length; i++) {
+                for (int j=0; j<words.size();j++){
+                    for (int k=0; k<words.get(j).length; k++) {
+                        if (words.get(j)[k].equalsIgnoreCase(inArr[i])) {
+                            List<String> inAL= new ArrayList<String>(Arrays.asList(inArr));
+                            inAL.remove(i);
+                            inArr=inAL.toArray(new String[inAL.size()]);
+                            
+                        }
+                    }
+                }
+            }
+            words.add(inArr);
+            System.out.println("Words I've seen are: ");
+            for (int l=0; l<words.size(); l++) {
+                System.out.print(Arrays.deepToString(words.get(l)));
+            }
+        }
+    }
+}
