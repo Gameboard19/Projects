@@ -2,6 +2,30 @@
 import java.io.*;
 import java.util.*;
 class WordCollector {
+    static class filter {
+        void filterWords() {
+            for (int i=0; i<inArr.length; i++) {
+                if (inAL.size()==0) {
+                    @Override
+                }
+                for (int j=0; j<words.size();j++){
+                    for (int k=0; k<words.get(j).length; k++) {
+                        if (words.get(j)[k].equalsIgnoreCase(inAL.get(i))) {
+                            
+                            inAL.remove(i);
+                            k--;
+                        }
+                    }
+                }
+                for (int m=i; m<inAL.size(); m++) {
+                    if (inAL.get(m).equalsIgnoreCase(inArr[i])&&i!=m) {
+                                inAL.remove(m);
+                                m--;
+                    }
+                } 
+            }
+        }
+    }
     static Scanner s= new Scanner(System.in);
     public static void main(String[] args) {
         List<String[]> words = new ArrayList<String[]>();
@@ -10,18 +34,10 @@ class WordCollector {
             String in= s.nextLine();
             in=in.replaceAll("[.,?!':;]","");
             inArr= in.split(" ");
-            for (int i=0; i<inArr.length; i++) {
-                for (int j=0; j<words.size();j++){
-                    for (int k=0; k<words.get(j).length; k++) {
-                        if (words.get(j)[k].equalsIgnoreCase(inArr[i])) {
-                            List<String> inAL= new ArrayList<String>(Arrays.asList(inArr));
-                            inAL.remove(i);
-                            inArr=inAL.toArray(new String[inAL.size()]);
-                            
-                        }
-                    }
-                }
-            }
+            //turn to AL to remove words
+            List<String> inAL= new ArrayList<String>(Arrays.asList(inArr));
+            // filters out already seen words
+            inArr=inAL.toArray(new String[inAL.size()]);
             words.add(inArr);
             System.out.println("Words I've seen are: ");
             for (int l=0; l<words.size(); l++) {
